@@ -1,0 +1,14 @@
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+
+#json_key = json.load(open('client_secret.json')) # json credentials you downloaded earlier
+#scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com./auth/drive']
+scope = ['https://www.googleapis.com./auth/drive']
+
+credentials = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json',scope) # get email and key from creds
+
+file = gspread.authorize(credentials) # authenticate with Google
+sheet = file.open("hoja1demodata").sheet1 # open sheet
+
+
+print(sheet.get_all_records)
